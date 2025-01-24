@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtqbbvoy7gsg0"]
+[gd_scene load_steps=6 format=3 uid="uid://dtqbbvoy7gsg0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_62uqs"]
 [ext_resource type="PackedScene" uid="uid://bhyqis20wvvgn" path="res://sphere.tscn" id="1_kh8ai"]
@@ -8,6 +8,9 @@ size = Vector3(100, 2, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_v84ks"]
 size = Vector3(100, 2, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mos35"]
+font_size = 64
 
 [node name="Main" type="Node"]
 script = ExtResource("1_62uqs")
@@ -36,5 +39,20 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 [node name="Tick" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scores" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 43.0
+offset_bottom = 29.0
+text = "Bubble Area"
+label_settings = SubResource("LabelSettings_mos35")
 
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
