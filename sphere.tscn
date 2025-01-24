@@ -1,4 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhyqis20wvvgn"]
+[gd_scene load_steps=8 format=3 uid="uid://bhyqis20wvvgn"]
+
+[ext_resource type="Shader" path="res://shader/blub.gdshader" id="1_76wdm"]
+[ext_resource type="Texture2D" uid="uid://bne5my3ygsoar" path="res://texture/NoiseColorTexture.png" id="2_env2d"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_of5b5"]
+noise_type = 3
+seed = 3
+frequency = 0.008
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ys2av"]
+noise = SubResource("FastNoiseLite_of5b5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4uuyl"]
+render_priority = 0
+shader = ExtResource("1_76wdm")
+shader_parameter/smoothness = 0.05
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ys2av")
+shader_parameter/color = ExtResource("2_env2d")
 
 [sub_resource type="SphereMesh" id="SphereMesh_pi128"]
 lightmap_size_hint = Vector2i(316, 159)
@@ -11,6 +30,7 @@ radius = 10.0
 [node name="Sphere" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_4uuyl")
 mesh = SubResource("SphereMesh_pi128")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

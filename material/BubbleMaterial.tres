@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bejjugeklsf6t"]
+
+[ext_resource type="Shader" path="res://shader/blub.gdshader" id="1_g8tyi"]
+[ext_resource type="Texture2D" uid="uid://bne5my3ygsoar" path="res://texture/NoiseColorTexture.png" id="2_5ncoj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_of5b5"]
+noise_type = 3
+seed = 3
+frequency = 0.008
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ys2av"]
+noise = SubResource("FastNoiseLite_of5b5")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_g8tyi")
+shader_parameter/smoothness = 0.05
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ys2av")
+shader_parameter/color = ExtResource("2_5ncoj")
