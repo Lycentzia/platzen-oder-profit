@@ -27,7 +27,7 @@ func _on_start_button_pressed():
 
 func _on_tick_timeout():
 	var oxygenOld = Globals.oxygen
-	Globals.oxygen = Globals.building1 * 0.002 - Globals.building2 * 0.003
+	Globals.oxygen = Globals.building1 * 0.003 - Globals.building2 * 0.002
 	if Globals.oxygen != oxygenOld:
 		Globals.sphereShrinkRate = Globals.sphereShrinkRate + Globals.oxygen
 	
