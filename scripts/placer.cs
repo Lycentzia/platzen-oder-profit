@@ -50,8 +50,8 @@ public partial class placer : Node3D
 			var mousepos = GetViewport().GetMousePosition();
 			
 			//var camera3D = GetParent().GetNode<Camera3D>("CameraPivot/Camera3D");
-        	var from = camera3D.ProjectRayOrigin(mousepos);
-        	var to = from + camera3D.ProjectRayNormal(mousepos) * raylength;
+			var from = camera3D.ProjectRayOrigin(mousepos);
+			var to = from + camera3D.ProjectRayNormal(mousepos) * raylength;
 			PhysicsDirectSpaceState3D space_state = GetWorld3D().DirectSpaceState;
 			var query = PhysicsRayQueryParameters3D.Create(from, to);
 			//query.Exclude = new Godot.Collections.Array<Rid> { GetParent().GetNode<StaticBody3D>("Sphere").GetRid() };
