@@ -126,3 +126,4 @@ bubble = NodePath("../Sphere")
 
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
 [connection signal="pressed" from="Menu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="AddBuilding" from="Node3D" to="." method="_on_add_building"]

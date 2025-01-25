@@ -49,3 +49,9 @@ func _on_tick_timeout():
 		$Sun.rotation = Vector3(-1 * cos(timeRad), PI / 2, 0) # rotation moves from noon (top down) to sunset (from left) and so on
 		$Sun.light_color = Color(1, 1, cos(timeRad), 1)
 		timeLabel.text = "Time of Day: " + str((12 + int(round((Globals.time / Globals.cycleTime) * 24))) % 24)
+
+func _on_add_building(index: int):
+	if (index == 0):
+		Globals.building1 += 1
+	elif (index == 1):
+		Globals.building2 += 1
