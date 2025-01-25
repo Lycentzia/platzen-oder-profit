@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtqbbvoy7gsg0"]
+[gd_scene load_steps=8 format=3 uid="uid://dtqbbvoy7gsg0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_62uqs"]
 [ext_resource type="PackedScene" uid="uid://bhyqis20wvvgn" path="res://sphere.tscn" id="1_kh8ai"]
@@ -9,11 +9,21 @@ size = Vector3(100, 2, 100)
 [sub_resource type="BoxMesh" id="BoxMesh_v84ks"]
 size = Vector3(100, 2, 100)
 
+[sub_resource type="LabelSettings" id="LabelSettings_mos35"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvfyb"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_chduc"]
+font_size = 128
+
 [node name="Main" type="Node"]
 script = ExtResource("1_62uqs")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_o3wit")
@@ -22,7 +32,7 @@ shape = SubResource("BoxShape3D_o3wit")
 mesh = SubResource("BoxMesh_v84ks")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 0)
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 100, 0)
 shadow_enabled = true
 
 [node name="CameraPivot" type="Marker3D" parent="."]
@@ -37,4 +47,67 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 wait_time = 0.1
 autostart = true
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scores" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 386.0
+offset_bottom = 96.0
+text = "Bubble Area"
+label_settings = SubResource("LabelSettings_mos35")
+
+[node name="Time" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 168.0
+text = "Time"
+label_settings = SubResource("LabelSettings_uvfyb")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 1149.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Platzen oder Profit"
+label_settings = SubResource("LabelSettings_chduc")
+
+[node name="StartButton" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 164.0
+offset_right = 292.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
+[connection signal="pressed" from="Menu/StartButton" to="." method="_on_start_button_pressed"]
