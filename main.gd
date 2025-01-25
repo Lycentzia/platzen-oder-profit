@@ -6,6 +6,7 @@ extends Node
 @onready var timeLabel = $UI/Time
 @onready var menuTitle = $Menu/Title
 @onready var menuStartButton = $Menu/StartButton
+@onready var buildingsPlacer = $BuildingsPlacer
 
 
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _ready() -> void:
 	
 func _on_start_button_pressed():
 	Globals.reset()
+	buildingsPlacer.reset()
 	sphere.scale = Vector3(1,1,1)
 	sphere.visible = true
 	$UI.visible = true

@@ -30,6 +30,8 @@ public partial class placer : Node3D
 	private System.Collections.ArrayList allBuildings = new System.Collections.ArrayList();
 	private PackedScene currentBuilding;
 	
+	private System.Collections.ArrayList placedBuildings = new System.Collections.ArrayList();
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -73,6 +75,7 @@ public partial class placer : Node3D
 		Node3D ibuilding = (Node3D) currentBuilding.Instantiate();
 		ibuilding.Position = pos;
 		GetParent().AddChild(ibuilding);
+		placedBuildings.Add(ibuilding);
 		placeNow = false;
 	}
 
@@ -87,4 +90,10 @@ public partial class placer : Node3D
 		EmitSignal(SignalName.AddBuilding, n);
 	}
 	
+	public void reset(){
+		foreach(Node b in placedBuildings){
+			b.QueueFree();
+		}
+		placedBuildings = new System.Collections.ArrayList();
+	}
 }
