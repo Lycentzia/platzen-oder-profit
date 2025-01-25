@@ -4,6 +4,18 @@ extends Node
 @onready var tick = $Tick
 @onready var scoresLabel = $UI/Scores
 @onready var timeLabel = $UI/Time
+@onready var menuTitle = $Menu/Title
+@onready var menuStartButton = $Menu/StartButton
+
+
+func _ready() -> void:
+	$UI.visible = false
+	tick.stop()
+	
+func _on_start_button_pressed():
+	$UI.visible = true
+	$Menu.visible = false
+	tick.start()
 
 var sphereInitialRadius = 10 # how to get this programmatically?
 var sphereShrinkRate = 0.999
@@ -35,6 +47,9 @@ func _on_tick_timeout():
 		# game over
 		$Sun.light_color = Color(1, 0, 0, 1)
 		sphere.visible = false # insert bubble explosion here
+		tick.stop()
+		$UI.visible = false
+		$Menu.visible = true
 	else: 	
 		time += 0.1
 		var timeRad = (time / cycleTime) * 2 * PI 
