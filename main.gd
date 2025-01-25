@@ -1,11 +1,17 @@
 extends Node
 
 @onready var sphere = $Sphere
+@onready var tick = $Tick
 @onready var scoresLabel = $UI/Scores
 @onready var timeLabel = $UI/Time
 
 var sphereInitialRadius = 10 # how to get this programmatically?
 var sphereShrinkRate = 0.999
+var sphereMaxRadius = 50
+var sphereMinRadius = 5
+
+var building1 = 0
+var building2 = 2
 
 var oxygen = 0
 var time = 0 # time starts at 0
@@ -21,12 +27,18 @@ func _on_tick_timeout():
 	var scaleAfter = scaleBefore * Vector3(sphereShrinkRate, sphereShrinkRate, sphereShrinkRate)
 	sphere.scale = scaleAfter
 	
-	var sphereArea = sphere.scale.x * sphereInitialRadius * sphereInitialRadius * PI
+	var sphereCurrentRadius = sphere.scale.x * sphereInitialRadius
+	var sphereArea = sphereCurrentRadius * sphereCurrentRadius * PI
 	scoresLabel.text = "Bubble Area: " + str(round(sphereArea)) + "m²" + str((oxygen))
 	
-	time += 0.1
-	var timeRad = (time / cycleTime) * 2 * PI 
-	$Sun.position = Vector3(-1 * cos(timeRad) * 100, cos(timeRad) * 100, 0) # position moves in circle around z axis
-	$Sun.rotation = Vector3(-1 * cos(timeRad), PI / 2, 0) # rotation moves from noon (top down) to sunset (from left) and so on
-	$Sun.light_color = Color(1, 1, cos(timeRad), 1)
-	timeLabel.text = "Time of Day: " + str((12 + int(round((time / cycleTime) * 24))) % 24)
+	if (sphereCurrentRadius > sphereMaxRadius || sphereCurrentRadius < sphereMinRadius) :
+		# game over
+		$Sun.light_color = Color(1, 0, 0, 1)
+		sphere.visible = false # insert bubble explosion here
+	else: 	
+		time += 0.1
+		var timeRad = (time / cycleTime) * 2 * PI 
+		$Sun.position = Vector3(-1 * cos(timeRad) * 100, cos(timeRad) * 100, 0) # position moves in circle around z axis
+		$Sun.rotation = Vector3(-1 * cos(timeRad), PI / 2, 0) # rotation moves from noon (top down) to sunset (from left) and so on
+		$Sun.light_color = Color(1, 1, cos(timeRad), 1)
+		timeLabel.text = "Time of Day: " + str((12 + int(round((time / cycleTime) * 24))) % 24)
