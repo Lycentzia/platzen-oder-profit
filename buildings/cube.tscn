@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://vjyrkrqknvvy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k0yb"]
+albedo_color = Color(1, 0, 0.0431373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_isxwc"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_7k0yb")
+mesh = SubResource("BoxMesh_isxwc")
