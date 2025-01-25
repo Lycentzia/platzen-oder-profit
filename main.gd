@@ -9,10 +9,12 @@ extends Node
 
 
 func _ready() -> void:
+	Globals.reset()
 	$UI.visible = false
 	tick.stop()
 	
 func _on_start_button_pressed():
+	Globals.reset()
 	$UI.visible = true
 	$Menu.visible = false
 	tick.start()
