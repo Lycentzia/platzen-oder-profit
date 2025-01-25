@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_62uqs"]
 [ext_resource type="PackedScene" uid="uid://bhyqis20wvvgn" path="res://sphere.tscn" id="1_kh8ai"]
-[ext_resource type="Script" path="res://tick.gd" id="3_1ixrc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o3wit"]
 size = Vector3(100, 2, 100)
@@ -44,7 +43,6 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 [node name="Tick" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
-script = ExtResource("3_1ixrc")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
