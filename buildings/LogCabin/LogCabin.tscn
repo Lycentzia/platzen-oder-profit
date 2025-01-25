@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://csr1vkgm66vm7"]
+
+[ext_resource type="PackedScene" uid="uid://xk6lggenyvxu" path="res://buildings/LogCabin/LogCabin.fbx" id="1_uatbj"]
+
+[node name="LogCabin" type="Node3D"]
+
+[node name="LogCabin" parent="." instance=ExtResource("1_uatbj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
