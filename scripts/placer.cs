@@ -29,6 +29,7 @@ public partial class placer : Node3D
 	private RayCast3D rayCast3D;
 	private System.Collections.ArrayList allBuildings = new System.Collections.ArrayList();
 	private PackedScene currentBuilding;
+	private int currentBuildingNumber;
 	
 	private System.Collections.ArrayList placedBuildings = new System.Collections.ArrayList();
 	
@@ -76,18 +77,19 @@ public partial class placer : Node3D
 		ibuilding.Position = pos;
 		GetParent().AddChild(ibuilding);
 		placedBuildings.Add(ibuilding);
-		placeNow = false;
+		placeNow = false;		
+		EmitSignal(SignalName.AddBuilding, currentBuildingNumber);
 	}
 
 	public void loadObject(Button button){
 		GD.Print(button.Name);
 		String name = button.Name.ToString();
-		int n = name.Substring(name.Length -1 , 1).ToInt();
+		currentBuildingNumber = name.Substring(name.Length -1 , 1).ToInt();
 		//button.Name.ToString().Substring(button.Name.ToString() - 1, 1)[0];
 		//((PackedScene) allBuildings[0]).Instantiate();
-		currentBuilding = (PackedScene) allBuildings[n];
+		currentBuilding = (PackedScene) allBuildings[currentBuildingNumber];
 		placeNow = true;
-		EmitSignal(SignalName.AddBuilding, n);
+
 	}
 	
 	public void reset(){
