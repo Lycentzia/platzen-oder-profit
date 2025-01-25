@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bhyqis20wvvgn" path="res://sphere.tscn" id="1_kh8ai"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="2_0kr5m"]
 [ext_resource type="PackedScene" uid="uid://capbfvd5fn226" path="res://buildings/BuildingsPlacer.tscn" id="3_rsnmj"]
-[ext_resource type="PackedScene" uid="uid://dqtssp4cjxqad" path="res://buildings/cube.tscn" id="4_ktvh4"]
-[ext_resource type="PackedScene" uid="uid://bp7hjqnnjoqwk" path="res://buildings/building2.tscn" id="5_v7xpd"]
+[ext_resource type="PackedScene" uid="uid://csr1vkgm66vm7" path="res://buildings/LogCabin/LogCabin.tscn" id="5_6spvw"]
+[ext_resource type="PackedScene" path="res://buildings/building2.tscn" id="5_v7xpd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o3wit"]
 size = Vector3(100, 2, 100)
@@ -134,7 +134,7 @@ theme_override_font_sizes/font_size = 64
 text = "Start"
 
 [node name="BuildingsPlacer" parent="." node_paths=PackedStringArray("buttons", "camera3D", "bubble") instance=ExtResource("3_rsnmj")]
-building = Array[PackedScene]([ExtResource("4_ktvh4"), ExtResource("5_v7xpd")])
+building = Array[PackedScene]([ExtResource("5_6spvw"), ExtResource("5_v7xpd")])
 buttons = [NodePath("../UI/BuildingButton0"), NodePath("../UI/BuildingButton1")]
 camera3D = NodePath("../CameraPivot/Camera3D")
 bubble = NodePath("../Sphere")
