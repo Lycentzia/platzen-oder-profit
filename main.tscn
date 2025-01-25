@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtqbbvoy7gsg0"]
+[gd_scene load_steps=11 format=3 uid="uid://dtqbbvoy7gsg0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_62uqs"]
 [ext_resource type="PackedScene" uid="uid://bhyqis20wvvgn" path="res://sphere.tscn" id="1_kh8ai"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="2_0kr5m"]
 [ext_resource type="PackedScene" uid="uid://capbfvd5fn226" path="res://buildings/BuildingsPlacer.tscn" id="3_rsnmj"]
-[ext_resource type="PackedScene" path="res://buildings/cube.tscn" id="4_ktvh4"]
+[ext_resource type="PackedScene" uid="uid://dqtssp4cjxqad" path="res://buildings/cube.tscn" id="4_ktvh4"]
+[ext_resource type="PackedScene" uid="uid://bp7hjqnnjoqwk" path="res://buildings/building2.tscn" id="5_v7xpd"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o3wit"]
 size = Vector3(100, 2, 100)
@@ -41,6 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+script = ExtResource("2_0kr5m")
 
 [node name="Sphere" parent="." instance=ExtResource("1_kh8ai")]
 
@@ -72,13 +76,21 @@ offset_bottom = 168.0
 text = "Time"
 label_settings = SubResource("LabelSettings_uvfyb")
 
-[node name="Button0" type="Button" parent="UI"]
+[node name="BuildingButton0" type="Button" parent="UI"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 160.0
 offset_right = 122.0
 offset_bottom = 191.0
-text = "Add Building"
+text = "Building 1"
+
+[node name="BuildingButton1" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 234.0
+offset_bottom = 191.0
+text = "Building 2"
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 3
@@ -119,10 +131,11 @@ theme_override_font_sizes/font_size = 64
 text = "Start"
 
 [node name="Node3D" parent="." node_paths=PackedStringArray("buttons", "camera3D", "bubble") instance=ExtResource("3_rsnmj")]
-building = Array[PackedScene]([ExtResource("4_ktvh4")])
-buttons = [NodePath("../UI/Button0")]
+building = Array[PackedScene]([ExtResource("4_ktvh4"), ExtResource("5_v7xpd")])
+buttons = [NodePath("../UI/BuildingButton0"), NodePath("../UI/BuildingButton1")]
 camera3D = NodePath("../CameraPivot/Camera3D")
 bubble = NodePath("../Sphere")
 
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
 [connection signal="pressed" from="Menu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="AddBuilding" from="Node3D" to="." method="_on_add_building"]
