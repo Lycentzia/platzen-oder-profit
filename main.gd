@@ -15,6 +15,8 @@ func _ready() -> void:
 	
 func _on_start_button_pressed():
 	Globals.reset()
+	sphere.scale = Vector3(1,1,1)
+	sphere.visible = true
 	$UI.visible = true
 	$Menu.visible = false
 	tick.start()

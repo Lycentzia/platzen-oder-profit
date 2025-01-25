@@ -1,16 +1,16 @@
 extends Node
 
-var sphereInitialRadius = 10 # how to get this programmatically?
-var sphereShrinkRate = 0.999
-var sphereMaxRadius = 50
-var sphereMinRadius = 5
+var sphereInitialRadius
+var sphereShrinkRate
+var sphereMaxRadius
+var sphereMinRadius
 
-var oxygen = 0
-var time = 0 # time starts at 0
-var cycleTime = 120 # how many seconds are one day
+var oxygen
+var time
+var cycleTime
 
-var building1 = 5
-var building2 = 0
+var building1
+var building2
 
 func reset():
 	sphereInitialRadius = 10 # how to get this programmatically?
@@ -22,7 +22,7 @@ func reset():
 	time = 0 # time starts at 0
 	cycleTime = 120 # how many seconds are one day
 
-	building1 = 5
+	building1 = 0
 	building2 = 0
 
 # Called when the node enters the scene tree for the first time.
