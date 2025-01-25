@@ -18,6 +18,8 @@ func _on_start_button_pressed():
 	Globals.reset()
 	buildingsPlacer.reset()
 	sphere.scale = Vector3(1,1,1)
+	var sphereMeshAnimationPlacer: AnimationPlayer = sphere.get_node("MeshInstance3D/AnimationPlayer")
+	sphereMeshAnimationPlacer.queue("RESET")
 	sphere.visible = true
 	$UI.visible = true
 	$Menu.visible = false
@@ -40,7 +42,7 @@ func _on_tick_timeout():
 	if (sphereCurrentRadius > Globals.sphereMaxRadius || sphereCurrentRadius < Globals.sphereMinRadius) :
 		# game over
 		$Sun.light_color = Color(1, 0, 0, 1)
-		sphere.visible = false # insert bubble explosion here
+		sphere.destroyBubble()
 		tick.stop()
 		$UI.visible = false
 		$Menu.visible = true
