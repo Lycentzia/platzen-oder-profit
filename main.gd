@@ -1,10 +1,14 @@
 extends Node
 
 @onready var sphere = $Sphere
-@onready var scores = $UI/Scores
+@onready var scoresLabel = $UI/Scores
+@onready var timeLabel = $UI/Time
 
 var sphereInitialRadius = 10 # how to get this programmatically?
 var sphereShrinkRate = 0.999
+
+var time = 0 # time starts at 0
+var cycleTime = 120 # how many seconds are one day
 
 func _on_tick_timeout():
 	var scaleBefore = sphere.scale	
@@ -12,4 +16,11 @@ func _on_tick_timeout():
 	sphere.scale = scaleAfter
 	
 	var sphereArea = sphere.scale.x * sphereInitialRadius * sphereInitialRadius * PI
-	scores.text = "Bubble Area: " + str(round(sphereArea)) + "m²"
+	scoresLabel.text = "Bubble Area: " + str(round(sphereArea)) + "m²"
+	
+	time += 0.1
+	var timeRad = (time / cycleTime) * 2 * PI 
+	$Sun.position = Vector3(-1 * cos(timeRad) * 100, cos(timeRad) * 100, 0) # position moves in circle around z axis
+	$Sun.rotation = Vector3(-1 * cos(timeRad), PI / 2, 0) # rotation moves from noon (top down) to sunset (from left) and so on
+	$Sun.light_color = Color(1, 1, cos(timeRad), 1)
+	timeLabel.text = "Time of Day: " + str((12 + int(round((time / cycleTime) * 24))) % 24)
