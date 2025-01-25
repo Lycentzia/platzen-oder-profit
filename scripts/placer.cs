@@ -16,7 +16,10 @@ public partial class placer : Node3D
 	public Button[] buttons {get; set; }
 
 	[Export]
-	public Camera3D camera;
+	public Camera3D camera3D;
+
+	[Export]
+	public StaticBody3D bubble;
 
 	private bool placeNow { get; set; } = false;
 
@@ -46,12 +49,13 @@ public partial class placer : Node3D
 			var raylength = 1000;
 			var mousepos = GetViewport().GetMousePosition();
 			
-			var camera3D = GetParent().GetNode<Camera3D>("CameraPivot/Camera3D");
+			//var camera3D = GetParent().GetNode<Camera3D>("CameraPivot/Camera3D");
         	var from = camera3D.ProjectRayOrigin(mousepos);
         	var to = from + camera3D.ProjectRayNormal(mousepos) * raylength;
 			PhysicsDirectSpaceState3D space_state = GetWorld3D().DirectSpaceState;
 			var query = PhysicsRayQueryParameters3D.Create(from, to);
-			query.Exclude = new Godot.Collections.Array<Rid> { GetParent().GetNode<StaticBody3D>("Sphere").GetRid() };
+			//query.Exclude = new Godot.Collections.Array<Rid> { GetParent().GetNode<StaticBody3D>("Sphere").GetRid() };
+			query.Exclude = new Godot.Collections.Array<Rid> { bubble.GetRid() };
 			query.CollideWithAreas = true;
 
 			var result = space_state.IntersectRay(query);
