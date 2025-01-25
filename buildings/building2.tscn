@@ -4,6 +4,7 @@
 albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_y3nnf"]
+size = Vector3(5, 5, 5)
 
 [node name="Building2" type="Node3D"]
 

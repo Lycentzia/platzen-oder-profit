@@ -15,7 +15,7 @@ var building2
 func reset():
 	sphereInitialRadius = 10 # how to get this programmatically?
 	sphereShrinkRate = 0.999
-	sphereMaxRadius = 50
+	sphereMaxRadius = 35
 	sphereMinRadius = 5
 
 	oxygen = 0

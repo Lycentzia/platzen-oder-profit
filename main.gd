@@ -6,6 +6,7 @@ extends Node
 @onready var timeLabel = $UI/Time
 @onready var menuTitle = $Menu/Title
 @onready var menuStartButton = $Menu/StartButton
+@onready var buildingsPlacer = $BuildingsPlacer
 
 
 func _ready() -> void:
@@ -15,7 +16,10 @@ func _ready() -> void:
 	
 func _on_start_button_pressed():
 	Globals.reset()
+	buildingsPlacer.reset()
 	sphere.scale = Vector3(1,1,1)
+	var sphereMeshAnimationPlacer: AnimationPlayer = sphere.get_node("MeshInstance3D/AnimationPlayer")
+	sphereMeshAnimationPlacer.queue("RESET")
 	sphere.visible = true
 	$UI.visible = true
 	$Menu.visible = false
@@ -23,7 +27,7 @@ func _on_start_button_pressed():
 
 func _on_tick_timeout():
 	var oxygenOld = Globals.oxygen
-	Globals.oxygen = Globals.building1 * 0.002 - Globals.building2 * 0.003
+	Globals.oxygen = Globals.building1 * 0.003 - Globals.building2 * 0.002
 	if Globals.oxygen != oxygenOld:
 		Globals.sphereShrinkRate = Globals.sphereShrinkRate + Globals.oxygen
 	
@@ -38,7 +42,7 @@ func _on_tick_timeout():
 	if (sphereCurrentRadius > Globals.sphereMaxRadius || sphereCurrentRadius < Globals.sphereMinRadius) :
 		# game over
 		$Sun.light_color = Color(1, 0, 0, 1)
-		sphere.visible = false # insert bubble explosion here
+		sphere.destroyBubble()
 		tick.stop()
 		$UI.visible = false
 		$Menu.visible = true

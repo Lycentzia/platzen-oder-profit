@@ -30,10 +30,10 @@ void fragment() {
 	ALBEDO = texture(color, world_position.xy + vec2(TIME * 0.1)).rgb;
 	ROUGHNESS = 0.0f;
 	ALPHA = fresnel;
-	
+
 	vec2 pixelFract = fract(UV * fragment_number);
 	float pixelDist = distance(pixelFract, vec2(0.5,0.5));
-	ALPHA *= step(pixelDist, dissolve_state); 
+	ALPHA *= step(pixelDist, dissolve_state);
 	// Called for every pixel the material is visible on.
 }
 

@@ -29,6 +29,9 @@ public partial class placer : Node3D
 	private RayCast3D rayCast3D;
 	private System.Collections.ArrayList allBuildings = new System.Collections.ArrayList();
 	private PackedScene currentBuilding;
+	private int currentBuildingNumber;
+	
+	private System.Collections.ArrayList placedBuildings = new System.Collections.ArrayList();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -73,18 +76,26 @@ public partial class placer : Node3D
 		Node3D ibuilding = (Node3D) currentBuilding.Instantiate();
 		ibuilding.Position = pos;
 		GetParent().AddChild(ibuilding);
-		placeNow = false;
+		placedBuildings.Add(ibuilding);
+		placeNow = false;		
+		EmitSignal(SignalName.AddBuilding, currentBuildingNumber);
 	}
 
 	public void loadObject(Button button){
 		GD.Print(button.Name);
 		String name = button.Name.ToString();
-		int n = name.Substring(name.Length -1 , 1).ToInt();
+		currentBuildingNumber = name.Substring(name.Length -1 , 1).ToInt();
 		//button.Name.ToString().Substring(button.Name.ToString() - 1, 1)[0];
 		//((PackedScene) allBuildings[0]).Instantiate();
-		currentBuilding = (PackedScene) allBuildings[n];
+		currentBuilding = (PackedScene) allBuildings[currentBuildingNumber];
 		placeNow = true;
-		EmitSignal(SignalName.AddBuilding, n);
+
 	}
 	
+	public void reset(){
+		foreach(Node b in placedBuildings){
+			b.QueueFree();
+		}
+		placedBuildings = new System.Collections.ArrayList();
+	}
 }

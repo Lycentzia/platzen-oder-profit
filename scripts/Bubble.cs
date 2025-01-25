@@ -9,7 +9,7 @@ public partial class Bubble : StaticBody3D
 	{
 	}
 
-	public void  destoryBubble(){
+	public void  destroyBubble(){
 		AnimationPlayer player = GetNode<AnimationPlayer>("MeshInstance3D/AnimationPlayer");
 		player.Play("DestroyBubble");
 	}	

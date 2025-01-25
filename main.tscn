@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtqbbvoy7gsg0"]
+[gd_scene load_steps=13 format=3 uid="uid://dtqbbvoy7gsg0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_62uqs"]
 [ext_resource type="PackedScene" uid="uid://bhyqis20wvvgn" path="res://sphere.tscn" id="1_kh8ai"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dqtssp4cjxqad" path="res://buildings/cube.tscn" id="4_ktvh4"]
 [ext_resource type="PackedScene" uid="uid://bp7hjqnnjoqwk" path="res://buildings/building2.tscn" id="5_v7xpd"]
 
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_o3wit"]
 size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf3g0"]
+albedo_color = Color(0.223529, 0.403922, 0.219608, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_v84ks"]
 size = Vector3(100, 2, 100)
@@ -33,6 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_o3wit")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+material_override = SubResource("StandardMaterial3D_vf3g0")
 mesh = SubResource("BoxMesh_v84ks")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
@@ -130,7 +133,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "Start"
 
-[node name="Node3D" parent="." node_paths=PackedStringArray("buttons", "camera3D", "bubble") instance=ExtResource("3_rsnmj")]
+[node name="BuildingsPlacer" parent="." node_paths=PackedStringArray("buttons", "camera3D", "bubble") instance=ExtResource("3_rsnmj")]
 building = Array[PackedScene]([ExtResource("4_ktvh4"), ExtResource("5_v7xpd")])
 buttons = [NodePath("../UI/BuildingButton0"), NodePath("../UI/BuildingButton1")]
 camera3D = NodePath("../CameraPivot/Camera3D")
@@ -138,4 +141,4 @@ bubble = NodePath("../Sphere")
 
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
 [connection signal="pressed" from="Menu/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="AddBuilding" from="Node3D" to="." method="_on_add_building"]
+[connection signal="AddBuilding" from="BuildingsPlacer" to="." method="_on_add_building"]
