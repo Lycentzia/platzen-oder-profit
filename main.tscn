@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_62uqs"]
 [ext_resource type="PackedScene" uid="uid://bhyqis20wvvgn" path="res://sphere.tscn" id="1_kh8ai"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="2_0kr5m"]
 [ext_resource type="PackedScene" uid="uid://capbfvd5fn226" path="res://buildings/BuildingsPlacer.tscn" id="3_rsnmj"]
 [ext_resource type="PackedScene" uid="uid://dqtssp4cjxqad" path="res://buildings/cube.tscn" id="4_ktvh4"]
 [ext_resource type="PackedScene" uid="uid://bp7hjqnnjoqwk" path="res://buildings/building2.tscn" id="5_v7xpd"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o3wit"]
 size = Vector3(100, 2, 100)
@@ -42,6 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+script = ExtResource("2_0kr5m")
 
 [node name="Sphere" parent="." instance=ExtResource("1_kh8ai")]
 
