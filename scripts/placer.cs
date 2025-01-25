@@ -6,6 +6,9 @@ using System.Transactions;
 
 public partial class placer : Node3D
 {
+	[Signal]
+    public delegate void AddBuildingEventHandler(int n);
+
 	public Vector3 place;
 	//private PackedScene building = GD.Load<PackedScene>("res://buildings/cube.tscn");
 
@@ -81,7 +84,7 @@ public partial class placer : Node3D
 		//((PackedScene) allBuildings[0]).Instantiate();
 		currentBuilding = (PackedScene) allBuildings[n];
 		placeNow = true;
+		EmitSignal(SignalName.AddBuilding, n);
 	}
-
 	
 }
