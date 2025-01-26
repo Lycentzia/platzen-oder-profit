@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bee34sqejfyvx"]
+
+[ext_resource type="PackedScene" uid="uid://rotuui37c4bb" path="res://buildings/TireCar/wheel_tire_car.fbx" id="1_rbl2f"]
+[ext_resource type="PackedScene" uid="uid://cftoo2qx6bvkw" path="res://vfx/vfx_fire_cpu.tscn" id="2_sw862"]
+
+[node name="TireCar" type="Node3D"]
+
+[node name="wheel_tire_car" parent="." instance=ExtResource("1_rbl2f")]
+transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 0, 0)
+
+[node name="vfx_fire" parent="." instance=ExtResource("2_sw862")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.853005, 0, 1.26488)
+
+[node name="vfx_fire2" parent="." instance=ExtResource("2_sw862")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.924216, 0, 1.29847)
