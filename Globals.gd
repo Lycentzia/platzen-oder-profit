@@ -29,7 +29,7 @@ func reset():
 	building1 = 0
 	building2 = 0
 	
-	money = 1
+	money = 0.8
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

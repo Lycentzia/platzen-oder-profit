@@ -40,7 +40,7 @@ func _on_tick_timeout():
 	scoresLabel.text = "Bubble Area: " + str(round(sphereArea)) + "m²"
 	
 	Globals.money = Globals.money + Globals.building1 * 0.003 - Globals.building2 * 0.002
-	Globals.money = snapped(Globals.money * 1.001,0.001)
+	Globals.money = snapped(Globals.money * 1.0001,0.001)
 	scoresLabel.text = scoresLabel.text + " | " + str("%.3f" % Globals.money) + "₿"
 	
 	if (sphereCurrentRadius > Globals.sphereMaxRadius || sphereCurrentRadius < Globals.sphereMinRadius || Globals.money < 0) :
@@ -61,5 +61,7 @@ func _on_tick_timeout():
 func _on_add_building(index: int):
 	if (index == 0):
 		Globals.building1 += 1
+		Globals.money -= 0.2
 	elif (index == 1):
 		Globals.building2 += 1
+		Globals.money -= 0.2
