@@ -1,3 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+platzen-oder-profit*.dmg
+platzen-oder-profit*.zip
+.DS_Store

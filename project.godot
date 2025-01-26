@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Globals="*res://Globals.gd"
 
+[display]
+
+window/size/mode=3
+
 [dotnet]
 
 project/assembly_name="platzen-oder-profit"
