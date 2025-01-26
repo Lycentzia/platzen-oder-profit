@@ -27,12 +27,12 @@ func _on_start_button_pressed():
 
 func _on_tick_timeout():
 	var oxygenOld = Globals.oxygen
-	Globals.oxygen = Globals.building1 * 0.003 - Globals.building2 * 0.002
+	Globals.oxygen = Globals.building1 * 0.0029 - Globals.building2 * 0.003
 	if Globals.oxygen != oxygenOld:
-		Globals.sphereShrinkRate = Globals.sphereShrinkRate + Globals.oxygen
+		Globals.sphereChangeRate = Globals.sphereShrinkRate + Globals.oxygen
 	
 	var scaleBefore = sphere.scale	
-	var scaleAfter = scaleBefore * Vector3(Globals.sphereShrinkRate, Globals.sphereShrinkRate, Globals.sphereShrinkRate)
+	var scaleAfter = scaleBefore * Vector3(Globals.sphereChangeRate, Globals.sphereChangeRate, Globals.sphereChangeRate)
 	sphere.scale = scaleAfter
 	
 	var sphereCurrentRadius = sphere.scale.x * Globals.sphereInitialRadius

@@ -2,6 +2,7 @@ extends Node
 
 var sphereInitialRadius
 var sphereShrinkRate
+var sphereChangeRate
 var sphereMaxRadius
 var sphereMinRadius
 
@@ -17,6 +18,7 @@ var money
 func reset():
 	sphereInitialRadius = 10 # how to get this programmatically?
 	sphereShrinkRate = 0.999
+	sphereChangeRate = 0.999
 	sphereMaxRadius = 35
 	sphereMinRadius = 5
 
@@ -27,7 +29,7 @@ func reset():
 	building1 = 0
 	building2 = 0
 	
-	money = 0
+	money = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
