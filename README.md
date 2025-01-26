@@ -2,7 +2,7 @@
 
 Wirtschaftssimulator in einer Seifenblase
 
-Sollte das Spiel unter Linux abstürzen, kann die CPU Version 
+Sollte das Spiel unter Linux abstürzen, kann die CPU Version verwendet werden. 
 
 ## Assets:
 * Grass
@@ -33,7 +33,7 @@ Sollte das Spiel unter Linux abstürzen, kann die CPU Version
   * by Digital Typeface Studio
   * 100% free
 
-Music:
+## Music:
 * Enchanted Tiki 86
   * https://opengameart.org/content/enchanted-tiki-86
   * by cynicmusic
