@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://cftoo2qx6bvkw"]
+
+[ext_resource type="Shader" uid="uid://2oocm2dgya5w" path="res://shader/VFX_Fire.tres" id="1_3hgpm"]
+[ext_resource type="Texture2D" uid="uid://bdnrr1fiju2uk" path="res://texture/fire/Voronoi01.png" id="2_muaxw"]
+[ext_resource type="Texture2D" uid="uid://du0whm1mhnd7v" path="res://texture/fire/Flame01.png" id="3_satb2"]
+[ext_resource type="Texture2D" uid="uid://ctlu3p3oyqasv" path="res://texture/fire/Flame02.png" id="4_w0j2n"]
+[ext_resource type="Shader" uid="uid://bwgmrkq51dpnr" path="res://shader/SimpleParticels.tres" id="5_opyqr"]
+[ext_resource type="Texture2D" uid="uid://bo7bfdt3rli7s" path="res://texture/fire/Flare00.PNG" id="6_t23ih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipawj"]
+render_priority = 0
+shader = ExtResource("1_3hgpm")
+shader_parameter/DissolveTiling = Vector2(0.25, 0.2)
+shader_parameter/DissolveSpeed = Vector2(0, 0.2)
+shader_parameter/DissolveAmount = 0.53
+shader_parameter/MainTex = ExtResource("3_satb2")
+shader_parameter/DissolveTexture = ExtResource("2_muaxw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jow7j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22ewr"]
+render_priority = 0
+shader = ExtResource("1_3hgpm")
+shader_parameter/DissolveTiling = Vector2(1, 1)
+shader_parameter/DissolveSpeed = Vector2(0, 0)
+shader_parameter/DissolveAmount = 0.0
+shader_parameter/MainTex = ExtResource("4_w0j2n")
+shader_parameter/DissolveTexture = ExtResource("2_muaxw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_sj6kw"]
+
+[sub_resource type="Curve" id="Curve_uftxc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0454545, 0.318681), 0.0, 0.0, 0, 0, Vector2(0.189394, 1), 0.0, 0.0, 0, 0, Vector2(0.742424, 0.340659), -1.51099, -1.51099, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_1jmd1"]
+offsets = PackedFloat32Array(0, 0.162338, 0.470779, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.802885, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwkyu"]
+render_priority = 0
+shader = ExtResource("5_opyqr")
+shader_parameter/MainTex = ExtResource("6_t23ih")
+
+[sub_resource type="QuadMesh" id="QuadMesh_l1j4s"]
+
+[node name="vfx_fire" type="Node3D"]
+
+[node name="StaticFlame" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.568829, 0)
+material_override = SubResource("ShaderMaterial_ipawj")
+amount = 1
+lifetime = 5.0
+fixed_fps = 30
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8)
+mesh = SubResource("QuadMesh_jow7j")
+gravity = Vector3(0, 0, 0)
+color = Color(4, 1.25, 0.6, 1)
+
+[node name="Flames" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.164306, 0)
+material_override = SubResource("ShaderMaterial_22ewr")
+amount = 20
+lifetime = 1.2
+fixed_fps = 30
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8)
+mesh = SubResource("QuadMesh_sj6kw")
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3(0, 5, 0)
+damping_min = 0.5
+damping_max = 1.0
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_min = 0.75
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_uftxc")
+color = Color(4, 1.25, 0.6, 0.8)
+
+[node name="Smoke" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.220133, 0)
+sorting_offset = -1.0
+material_override = SubResource("ShaderMaterial_22ewr")
+amount = 20
+lifetime = 2.5
+fixed_fps = 30
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8)
+mesh = SubResource("QuadMesh_sj6kw")
+emission_shape = 1
+emission_sphere_radius = 0.3
+gravity = Vector3(0, 5, 0)
+damping_min = 0.5
+damping_max = 1.0
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_min = 1.75
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_uftxc")
+color = Color(0, 0, 0, 0.8)
+color_ramp = SubResource("Gradient_1jmd1")
+
+[node name="ParticlesFloating" type="CPUParticles3D" parent="."]
+sorting_offset = 1.0
+material_override = SubResource("ShaderMaterial_qwkyu")
+amount = 50
+lifetime = 2.0
+fixed_fps = 30
+visibility_aabb = AABB(-4, -4, -4, 8, 8, 8)
+mesh = SubResource("QuadMesh_l1j4s")
+emission_shape = 1
+emission_sphere_radius = 0.6
+gravity = Vector3(0, 4, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.12
+color = Color(4, 1.25, 0.6, 0.8)
