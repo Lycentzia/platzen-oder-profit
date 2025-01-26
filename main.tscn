@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://capbfvd5fn226" path="res://buildings/BuildingsPlacer.tscn" id="3_rsnmj"]
 [ext_resource type="FontFile" uid="uid://cin21rimt121q" path="res://bubbles.ttf" id="4_jtn67"]
 [ext_resource type="PackedScene" uid="uid://csr1vkgm66vm7" path="res://buildings/LogCabin/LogCabin.tscn" id="5_6spvw"]
-[ext_resource type="PackedScene" uid="uid://rotuui37c4bb" path="res://buildings/TireCar/wheel_tire_car.fbx" id="6_j8fu1"]
+[ext_resource type="PackedScene" path="res://buildings/TireCar/TireCar.tscn" id="6_dafdh"]
 [ext_resource type="AudioStream" uid="uid://bsthvy8qr3mqe" path="res://enchanted tiki 86.mp3" id="7_q5ejn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1g2qx"]
@@ -146,7 +146,7 @@ theme_override_font_sizes/font_size = 64
 text = "Start"
 
 [node name="BuildingsPlacer" parent="." node_paths=PackedStringArray("buttons", "camera3D", "bubble") instance=ExtResource("3_rsnmj")]
-building = Array[PackedScene]([ExtResource("5_6spvw"), ExtResource("6_j8fu1")])
+building = Array[PackedScene]([ExtResource("5_6spvw"), ExtResource("6_dafdh")])
 buttons = [NodePath("../UI/BuildingButton0"), NodePath("../UI/BuildingButton1")]
 camera3D = NodePath("../CameraPivot/Camera3D")
 bubble = NodePath("../Sphere")

@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bwgmrkq51dpnr"]
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bcgl0wvpfhrj1"]
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2e6q4"]
 parameter_name = "MainTex"
