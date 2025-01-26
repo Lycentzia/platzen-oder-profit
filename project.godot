@@ -45,4 +45,5 @@ mouse_leftclick={
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.866191, 0.676655, 0.866992, 1)

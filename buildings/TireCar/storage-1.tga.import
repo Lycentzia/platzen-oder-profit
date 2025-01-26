@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ly2283qt38fr"
 path.s3tc="res://.godot/imported/storage-1.tga-7b69f13635fcc27de77b9840b49b906d.s3tc.ctex"
+path.etc2="res://.godot/imported/storage-1.tga-7b69f13635fcc27de77b9840b49b906d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://buildings/TireCar/storage-1.tga"
-dest_files=["res://.godot/imported/storage-1.tga-7b69f13635fcc27de77b9840b49b906d.s3tc.ctex"]
+dest_files=["res://.godot/imported/storage-1.tga-7b69f13635fcc27de77b9840b49b906d.s3tc.ctex", "res://.godot/imported/storage-1.tga-7b69f13635fcc27de77b9840b49b906d.etc2.ctex"]
 
 [params]
 

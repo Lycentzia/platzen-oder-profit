@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0jr8wgklqpgr"
 path.s3tc="res://.godot/imported/paving_stones.tga-9f05695f883c0071750317aba989b56c.s3tc.ctex"
+path.etc2="res://.godot/imported/paving_stones.tga-9f05695f883c0071750317aba989b56c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://buildings/TireCar/paving_stones.tga"
-dest_files=["res://.godot/imported/paving_stones.tga-9f05695f883c0071750317aba989b56c.s3tc.ctex"]
+dest_files=["res://.godot/imported/paving_stones.tga-9f05695f883c0071750317aba989b56c.s3tc.ctex", "res://.godot/imported/paving_stones.tga-9f05695f883c0071750317aba989b56c.etc2.ctex"]
 
 [params]
 

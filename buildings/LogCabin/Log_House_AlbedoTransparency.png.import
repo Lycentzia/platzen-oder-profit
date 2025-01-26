@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd8c6hvuhuhfg"
 path.s3tc="res://.godot/imported/Log_House_AlbedoTransparency.png-ded524aaec87102e17083f28da46ff89.s3tc.ctex"
+path.etc2="res://.godot/imported/Log_House_AlbedoTransparency.png-ded524aaec87102e17083f28da46ff89.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://buildings/LogCabin/Log_House_AlbedoTransparency.png"
-dest_files=["res://.godot/imported/Log_House_AlbedoTransparency.png-ded524aaec87102e17083f28da46ff89.s3tc.ctex"]
+dest_files=["res://.godot/imported/Log_House_AlbedoTransparency.png-ded524aaec87102e17083f28da46ff89.s3tc.ctex", "res://.godot/imported/Log_House_AlbedoTransparency.png-ded524aaec87102e17083f28da46ff89.etc2.ctex"]
 
 [params]
 
