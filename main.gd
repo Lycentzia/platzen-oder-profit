@@ -37,9 +37,13 @@ func _on_tick_timeout():
 	
 	var sphereCurrentRadius = sphere.scale.x * Globals.sphereInitialRadius
 	var sphereArea = sphereCurrentRadius * sphereCurrentRadius * PI
-	scoresLabel.text = "Bubble Area: " + str(round(sphereArea)) + "m²" + str((Globals.oxygen))
+	scoresLabel.text = "Bubble Area: " + str(round(sphereArea)) + "m²"
 	
-	if (sphereCurrentRadius > Globals.sphereMaxRadius || sphereCurrentRadius < Globals.sphereMinRadius) :
+	Globals.money = Globals.money + Globals.building1 * 0.003 - Globals.building2 * 0.002
+	Globals.money = Globals.money * 1.001
+	scoresLabel.text = scoresLabel.text + " | " + str(Globals.money) + "₿"
+	
+	if (sphereCurrentRadius > Globals.sphereMaxRadius || sphereCurrentRadius < Globals.sphereMinRadius || Globals.money < 0) :
 		# game over
 		$Sun.light_color = Color(1, 0, 0, 1)
 		sphere.destroyBubble()
