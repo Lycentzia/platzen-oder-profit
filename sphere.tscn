@@ -25,7 +25,8 @@ shader_parameter/color = ExtResource("2_env2d")
 [sub_resource type="SphereMesh" id="SphereMesh_pi128"]
 lightmap_size_hint = Vector2i(316, 159)
 radius = 10.0
-height = 20.0
+height = 10.0
+is_hemisphere = true
 
 [sub_resource type="Animation" id="Animation_a3evi"]
 resource_name = "DestroyBubble"

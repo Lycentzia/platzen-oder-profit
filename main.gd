@@ -34,7 +34,7 @@ func _on_tick_timeout():
 	var scaleBefore = sphere.scale	
 	var scaleAfter = scaleBefore * Vector3(Globals.sphereChangeRate, Globals.sphereChangeRate, Globals.sphereChangeRate)
 	sphere.scale = scaleAfter
-	
+
 	var sphereCurrentRadius = sphere.scale.x * Globals.sphereInitialRadius
 	var sphereArea = sphereCurrentRadius * sphereCurrentRadius * PI
 	scoresLabel.text = "Bubble Area: " + str(round(sphereArea)) + "m²"

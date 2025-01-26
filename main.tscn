@@ -8,14 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://rotuui37c4bb" path="res://buildings/TireCar/wheel_tire_car.fbx" id="6_j8fu1"]
 [ext_resource type="AudioStream" uid="uid://bsthvy8qr3mqe" path="res://enchanted tiki 86.mp3" id="7_q5ejn"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_o3wit"]
-size = Vector3(100, 2, 100)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1g2qx"]
+radius = 10.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf3g0"]
 albedo_color = Color(0.223529, 0.403922, 0.219608, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_v84ks"]
-size = Vector3(100, 2, 100)
+[sub_resource type="CylinderMesh" id="CylinderMesh_ypjg8"]
+top_radius = 10.0
+bottom_radius = 10.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_mos35"]
 font_size = 64
@@ -33,11 +34,11 @@ script = ExtResource("1_62uqs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("BoxShape3D_o3wit")
+shape = SubResource("CylinderShape3D_1g2qx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 material_override = SubResource("StandardMaterial3D_vf3g0")
-mesh = SubResource("BoxMesh_v84ks")
+mesh = SubResource("CylinderMesh_ypjg8")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 100, 0)
