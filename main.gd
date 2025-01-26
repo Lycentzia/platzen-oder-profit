@@ -1,6 +1,7 @@
 extends Node
 
 @onready var sphere = $Sphere
+@onready var ground = $Ground
 @onready var tick = $Tick
 @onready var scoresLabel = $UI/Scores
 @onready var timeLabel = $UI/Time
@@ -36,6 +37,10 @@ func _on_tick_timeout():
 	sphere.scale = scaleAfter
 
 	var sphereCurrentRadius = sphere.scale.x * Globals.sphereInitialRadius
+	ground.get_node("CollisionShape3D").shape.set_radius(sphereCurrentRadius)
+	ground.get_node("MeshInstance3D").mesh.set_top_radius(sphereCurrentRadius)
+	ground.get_node("MeshInstance3D").mesh.set_bottom_radius(sphereCurrentRadius)
+
 	var sphereArea = sphereCurrentRadius * sphereCurrentRadius * PI
 	scoresLabel.text = "Bubble Area: " + str(round(sphereArea)) + "m²"
 	
