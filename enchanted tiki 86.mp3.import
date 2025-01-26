@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsthvy8qr3mqe"
+path="res://.godot/imported/enchanted tiki 86.mp3-4947108b8443df507a7d9301ca376109.mp3str"
+
+[deps]
+
+source_file="res://enchanted tiki 86.mp3"
+dest_files=["res://.godot/imported/enchanted tiki 86.mp3-4947108b8443df507a7d9301ca376109.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
