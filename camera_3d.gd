@@ -15,4 +15,6 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_released("Scroll down"):
 		position -= zoomSpeed
+		
+	look_at(Vector3(0,0,0))
 	pass
